@@ -204,7 +204,7 @@ class Connection
     {
         // Redirect for authorization if needed (no access token or refresh token given)
         if ($this->needsAuthentication()) {
-            $this->redirectForAuthorization();
+            return $this->redirectForAuthorization();
         }
 
         $this->checkOrAcquireAccessToken();
@@ -213,6 +213,8 @@ class Connection
 
         return $client;
     }
+
+    
 
     /**
      * Checks whether the access token is still valid.
@@ -474,6 +476,7 @@ class Connection
     public function redirectForAuthorization()
     {
         $authUrl = $this->getAuthUrl();
+        return $this->getAuthUrl();
         header('Location: ' . $authUrl);
         exit;
     }
